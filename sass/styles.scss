@@ -1,0 +1,44 @@
+@import 'mixins';
+
+#characterCard {
+  width: 60%;
+  margin: 5% auto;
+}
+
+.stat-con {
+  text-align: center;
+  ul {
+    list-style: none;
+  }
+}
+
+.base {
+  font-size: 1.5em;
+  position: relative;
+  display: block;
+}
+
+.base-stat {
+  width: 37%;
+  @include vertical-align(relative, 10%);
+
+}
+
+.stat-box {
+  display: inline-block;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+  border: 1px solid #000;
+  border-radius: 3px;
+  font-size: 1.2em;
+}
+
+.sub-stat {
+  display: inline-block;
+}
+
+ul {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}

@@ -1,0 +1,40 @@
+{
+  "name": "crash-nebula-boilerplate",
+  "version": "0.0.3",
+  "description": "Boilerplate for ruby roda projects",
+  "devDependencies": {
+    "browserify": "^16.2.2",
+    "clean-webpack-plugin": "^0.1.19",
+    "ts-loader": "^5.1.1",
+    "tsify": "^4.0.0",
+    "typescript": "^3.0.3",
+    "uglify-js": "3.3.5",
+    "uglifyjs-webpack-plugin": "^2.0.0",
+    "webpack": "^4.19.0",
+    "webpack-command": "^0.4.1"
+  },
+  "scripts": {
+    "watch-dev": "webpack --watch --config webpack.dev.js",
+    "build": "webpack --config webpack.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/millenniumbrain/crash-nebula-boilerplate.git"
+  },
+  "keywords": [
+    "ruby",
+    "coffee-script"
+  ],
+  "author": "Millennium Brain",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/millenniumbrain/crash-nebula-boilerplate/issues"
+  },
+  "homepage": "https://github.com/millenniumbrain/crash-nebula-boilerplate#readme",
+  "dependencies": {
+    "@types/chart.js": "^2.7.40",
+    "@types/luxon": "^1.4.0",
+    "chart.js": "^2.7.3",
+    "luxon": "^1.4.4"
+  }
+}

@@ -1,0 +1,40 @@
+# sqlite database
+db/*.sqlite
+
+# sass output files
+*.map
+public/css/dashboard.css
+public/css/users.css
+public/css/style.css
+
+# sass cache
+.sass-cache
+
+# bundler files
+.bundle
+vendor
+bin
+
+# screenshot
+mock_scripts/screenshots
+
+# Gemfile lock
+*.lock
+.lock
+Gemfile.lock
+
+# remove log files
+logs/*
+
+# js modules
+node_modules
+.yardoc/*
+docs
+public/.yardoc/*
+public/js/*
+
+# environment variables
+.env.rb
+
+# ngrok
+ngrok
