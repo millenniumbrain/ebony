@@ -13,12 +13,18 @@ const cleanOptions = {
 module.exports = {
   mode: 'development',
   entry: {
-    app: './ts/app.ts',
+    app: './ts/src/main.ts',
   },
   devtool: 'inline-source-maps',
+  target: "electron-main",
+  watch: true,
+  watchOptions: {
+    aggregateTimeout: 300,
+    poll: 1000
+  },
   output: {
-    filename: '[name].js',
-    path: path.resolve(__dirname, "js")
+    filename: 'main.js',
+    path: path.resolve(__dirname)
   },
   module: {
     rules: [
@@ -33,7 +39,7 @@ module.exports = {
     extensions: [".tsx", ".ts", ".js"]
   },
   plugins: [
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    new webpack.NoEmitOnErrorsPlugin(),
     new CleanWebpackPlugin(pathsToClean, cleanOptions),
   ]
 };
