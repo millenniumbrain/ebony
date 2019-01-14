@@ -53,26 +53,31 @@ export class Character {
       return 9;
     }
   }
-/*
+
   generateDmgBns() : number {
-    const combinedStats = this.str.base + this.siz.base;
+    const combinedStats: number = this.str.base + this.siz.base;
     let dmgBonus: number;
-    if (combinedStats >= 65 && combinedStats <= 84) {
-      dmgBonus = -1
-    } else if (combinedStats >= 125 && combinedStats <= 164) {
-      dmgBonus = 0;
-    } else if (combinedStats >= 165 && combinedStats <= 204) {
-
-    } else if (combinedStats >= 205 && combinedStats <= 284) {
-
-    } else if (combinedStats >= 285 && combinedStats <= 364) {
-
-    } else if (combinedStats >= 365 && combinedStats <= 444) {
-
-    } else if (combinedStats >= 445 && combinedStats <= 524) {
-
-    } else {
+    if (combinedStats >= 2 && combinedStats <= 64) {
       dmgBonus = -2;
+    } else if (combinedStats >= 65 && combinedStats <= 84) {
+      dmgBonus = -1
+    } else if (combinedStats >= 85 && combinedStats <= 124) {
+      dmgBonus = 0;
+    } else if (combinedStats >= 125 && combinedStats <= 164) {
+      dmgBonus = Helpers.rollNumDice(1, 4);
+    } else if (combinedStats >= 165 && combinedStats <= 204) {
+      dmgBonus = Helpers.rollNumDice(1, 6);
+    } else if (combinedStats >= 205 && combinedStats <= 284) {
+      dmgBonus = Helpers.rollNumDice(2, 6);
+    } else if (combinedStats >= 285 && combinedStats <= 364) {
+      dmgBonus = Helpers.rollNumDice(3, 6);
+    } else if (combinedStats >= 365 && combinedStats <= 444) {
+      dmgBonus = Helpers.rollNumDice(4, 6);
+    } else if (combinedStats >= 445 && combinedStats <= 524) {
+      dmgBonus = Helpers.rollNumDice(5, 6);
+    } else {
+      const addedRolls = Math.floor((combinedStats - 524) / 80);
+      dmgBonus = Helpers.rollNumDice(5 + addedRolls, 6);
     }
 
     return dmgBonus;
@@ -82,8 +87,9 @@ export class Character {
   generateBuild() : number {
     const combinedStats = this.str.base + this.siz.base;
     let build: number;
-    if (combinedStats >= 65 && combinedStats <= 84) {
+    if (combinedStats >= 2 && combinedStats <= 64) {
       build = -1
+    } else if (combinedStats >= 65 && combinedStats <= 84){
     } else if (combinedStats >= 125 && combinedStats <= 164) {
       build = 0;
     } else if (combinedStats >= 165 && combinedStats <= 204) {
@@ -102,7 +108,7 @@ export class Character {
 
     return build;
   }
-*/
+
   generateAge() : number {
     const age = Helpers.getRandomInt(89);
     if (age < 15) {

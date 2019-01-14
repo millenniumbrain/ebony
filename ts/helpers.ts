@@ -10,32 +10,11 @@ export class Helpers {
     }
     return num;
   }
-  
-  public static rollThreeDice() {
-    let total: number = 0;
-    for (let i = 0; i < 3; i++) {
-      total = total + this.getRandomInt(6);
-      if (i === 2) {
-        return total * 5;
-      }
-    } 
-  }
-  
-  public static rollTwoDice() : number {
-    let total: number = 0;
-    for (let i = 0; i < 2; i++) {
-      total = total + this.getRandomInt(6);
-      if (i === 1) {
-        
-        return (total + 6) * 5;
-      }
-    } 
-  }
 
-  public static rollNumDice(diceNum: number) {
+  public static rollNumDice(diceNum: number, numSides: number = 6) {
     let total: number = 0;
     for (let i = 0; i < diceNum; i++) {
-      total = total + this.getRandomInt(6);
+      total = total + this.getRandomInt(numSides);
     }
     return total;
   }
