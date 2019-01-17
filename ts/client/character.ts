@@ -25,7 +25,6 @@ export class Character {
   pow: StatAttributes;
   edu: StatAttributes;
 
-
   constructor(title: string, firstName: string, lastName: string, gender: string) {
     this.str = this.generateStats(3);
     this.con = this.generateStats(3);
@@ -36,15 +35,17 @@ export class Character {
     this.pow = this.generateStats(3);
     this.edu = this.generateStats(2);
     this.luck = Helpers.rollNumDice(3) * 5;
-    this.age = this.generateAge();
     this.mov = this.generateMovement();
+    this.dmgBonus = this.generateDmgBns();
+    this.build = this.generateBuild();
+    this.age = this.generateAge();
   }
 
   // generate a movement number based on a human character's stats
   generateMovement() : number {
-    const movNine = this.str.base > this.siz.base && this.dex.base > this.siz.base;
-    const movEight = this.str.base > this.siz.base || this.dex.base > this.siz.base;
-    const movSeven = this.str.base < this.siz.base || this.dex.base < this.siz.base;
+    const movNine: boolean = this.str.base > this.siz.base && this.dex.base > this.siz.base;
+    const movEight: boolean = this.str.base > this.siz.base || this.dex.base > this.siz.base;
+    const movSeven: boolean = this.str.base < this.siz.base || this.dex.base < this.siz.base;
     if (movSeven) {
       return 7;
     } else if (movEight && !movNine) {
@@ -77,7 +78,7 @@ export class Character {
       dmgBonus = Helpers.rollNumDice(5, 6);
     } else {
       const addedRolls = Math.floor((combinedStats - 524) / 80);
-      dmgBonus = Helpers.rollNumDice(5 + addedRolls, 6);
+      dmgBonus = Helpers.rollNumDice(5 + addedRolls);
     }
 
     return dmgBonus;
@@ -85,25 +86,29 @@ export class Character {
 
 
   generateBuild() : number {
-    const combinedStats = this.str.base + this.siz.base;
+    const combinedStats: number = this.str.base + this.siz.base;
     let build: number;
     if (combinedStats >= 2 && combinedStats <= 64) {
-      build = -1
-    } else if (combinedStats >= 65 && combinedStats <= 84){
-    } else if (combinedStats >= 125 && combinedStats <= 164) {
-      build = 0;
-    } else if (combinedStats >= 165 && combinedStats <= 204) {
-
-    } else if (combinedStats >= 205 && combinedStats <= 284) {
-
-    } else if (combinedStats >= 285 && combinedStats <= 364) {
-
-    } else if (combinedStats >= 365 && combinedStats <= 444) {
-
-    } else if (combinedStats >= 445 && combinedStats <= 524) {
-
-    } else {
       build = -2;
+    } else if (combinedStats >= 65 && combinedStats <= 84){
+      build = -1;
+    } else if (combinedStats >= 85 && combinedStats <= 124) {
+      build = 0;
+    } else if (combinedStats >= 125 && combinedStats <= 164) {
+      build = 1;
+    } else if (combinedStats >= 165 && combinedStats <= 204) {
+      build = 2;
+    } else if (combinedStats >= 205 && combinedStats <= 284) {
+      build = 3;
+    } else if (combinedStats >= 285 && combinedStats <= 364) {
+      build = 4;
+    } else if (combinedStats >= 365 && combinedStats <= 444) {
+      build = 5;
+    } else if (combinedStats >= 445 && combinedStats <= 524) {
+      build = 6;
+    } else {
+      const addedBonus: number = Math.floor((combinedStats - 524) / 80)
+      build = 6 + addedBonus;
     }
 
     return build;
@@ -136,7 +141,7 @@ export class Character {
     return stats;
   }
 
-  rollCheck(stat: string, rollType: string) : Boolean {
+  rollCheck(stat: string, rollType: string) : boolean {
     const roll = 1 + Helpers.getRandomInt(100);
     switch(rollType) {
       case "base":
@@ -163,7 +168,7 @@ export class Character {
     return false;
   }
 
-  toJSON() : {} {
+  toJSON() : object {
     return Object.getOwnPropertyNames(this).reduce((a, b) => {
       a[b] = this[b];
       return a;

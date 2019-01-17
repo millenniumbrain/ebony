@@ -11,7 +11,7 @@ function generateCharateristics(character: Character) {
 
   let statCollection = [];
 
-  for (let i = 0; i < props.length; i++) {
+  for (let i = 0; i < props.length - 1; i++) {
     const descript = Object.getOwnPropertyDescriptor(character, props[i]);
 
     const stat = document.createElement("div");
@@ -25,7 +25,7 @@ function generateCharateristics(character: Character) {
     const diffStatCon = document.createElement("li")
     const diffStat = document.createElement("span");
 
-    stat.className = "pure-u-1-3";
+    stat.className = "pure-u-1-4";
     statCon.className = "stat-con";
     statList.className = "base-stat-list";
 
@@ -105,11 +105,10 @@ document.addEventListener("DOMContentLoaded", () => {
     characterStore.setItem('character', JSON.stringify(character));
     
 
-    console.log(character.mov);
-    const charGender = document.getElementById("gender");
     const charName = document.getElementById("charName");
+    const charAge = document.getElementById("charAge");
 
-    charGender.textContent = Helpers.upcase(gender);
+    charAge.textContent = String(character.age);
     charName.textContent = `${Helpers.upcase(name["title"])}. ${Helpers.upcase(name["first"])} ${Helpers.upcase(name["last"])}`
   });
 });
@@ -128,14 +127,13 @@ rollChar.addEventListener("click", (event: Event) => {
       Helpers.upcase(gender));
 
     generateCharateristics(character);
-    console.log(character.mov);
 
     characterStore.setItem('character', JSON.stringify(character));
 
-    const charGender = document.getElementById("gender");
     const charName = document.getElementById("charName");
+    const charAge = document.getElementById("charAge");
 
-    charGender.textContent = Helpers.upcase(gender);
+    charAge.textContent = String(character.age);
     charName.textContent = `${Helpers.upcase(name["title"])}. ${Helpers.upcase(name["first"])} ${Helpers.upcase(name["last"])}`
   });
 });

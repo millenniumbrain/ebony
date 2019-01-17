@@ -1,6 +1,31 @@
 @import 'mixins';
+@import 'base';
+
+#browserControls {
+
+  color: #F6F4F4;
+  .pure-g {
+    padding: 15px 25px 0 15px;
+  }
+
+  button {
+    display: inline-block;
+    margin: 0 4px;
+    padding: 8px 10px;
+    background: none;
+    border: none;
+    &:hover {
+      color: #AA2930;
+    }
+  }
+}
+
+.window-controls {
+  text-align: right;
+}
 
 header {
+  color: #F6F4F4;
   margin: 5% 0 0;
   text-align: center;
 }
@@ -10,8 +35,28 @@ header {
 }
 
 #characterCard {
-  width: 60%;
+  width: 90%;
   margin: 2% auto;
+  h2 {
+    text-align: center;
+    margin: initial auto;
+    font-weight: normal;
+  }
+}
+
+#charInfo {
+  color: #F6F4F4;
+  font-size: 1.1em;
+}
+
+.desc-title {
+  margin: 5px 0;
+  display: inline-block;
+  width: 80px;
+}
+
+#charStats {
+  color: #F6F4F4;
 }
 
 .stat-con {
@@ -22,7 +67,11 @@ header {
 }
 
 .stat-title {
+  width: 95px;
+  color: #F84652;
+  font-weight: bold;
   text-transform: uppercase;
+  margin: 0 auto;
 }
 .base {
   font-size: 1.5em;
@@ -37,9 +86,10 @@ header {
 }
 
 .stat-box {
+  background: #2C293E;
   display: inline-block;
   padding: 8px 0;
-  border: 1px solid #000;
+  //border: 2px solid #AA2930;
   border-radius: 3px;
   font-size: 1.2em;
 }

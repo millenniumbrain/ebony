@@ -1,0 +1,18 @@
+html {
+  height: inherit;
+}
+
+body {
+  background: #09070E;
+  height: inherit;
+  width: 100%;
+  font-family: 'Inter UI';
+
+}
+
+.pure-g {
+  [class*="pure-u"] {
+    font-family: 'Inter UI' !important;
+  }
+}
+
