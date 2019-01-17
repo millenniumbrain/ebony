@@ -32,6 +32,7 @@ node_modules
 docs
 public/.yardoc/*
 public/js/*
+src/app.js
 
 # environment variables
 .env.rb
