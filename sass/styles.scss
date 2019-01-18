@@ -1,19 +1,28 @@
 @import 'mixins';
 @import 'base';
+@import 'nav';
+@import 'buttons';
 
 #browserControls {
-
+  top: 0;
+  position: fixed;
+  -webkit-app-region: drag;
   color: #F6F4F4;
+  width: 100%;
+  height: 40px;
+  background: #09070E;
   .pure-g {
     padding: 15px 25px 0 15px;
   }
 
   button {
+    -webkit-app-region: no-drag;
     display: inline-block;
     margin: 0 4px;
-    padding: 8px 10px;
+    padding: 0 10px;
     background: none;
     border: none;
+
     &:hover {
       color: #AA2930;
     }
@@ -24,13 +33,16 @@
   text-align: right;
 }
 
-header {
+#header {
   color: #F6F4F4;
-  margin: 5% 0 0;
+  margin: 2% 0 0;
   text-align: center;
+  h1 {
+
+  }
 }
 
-#buttonCon {
+.button-container {
   text-align: center;
 }
 
@@ -38,6 +50,7 @@ header {
   width: 90%;
   margin: 2% auto;
   h2 {
+    font-size: 1.05em;
     text-align: center;
     margin: initial auto;
     font-weight: normal;
@@ -72,6 +85,7 @@ header {
   font-weight: bold;
   text-transform: uppercase;
   margin: 0 auto;
+  font-size: 0.9em;
 }
 .base {
   font-size: 1.5em;

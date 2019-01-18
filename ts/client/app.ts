@@ -4,6 +4,34 @@ import {Helpers} from "../helpers";
 import * as request from "request";
 
 const characterStore = window.localStorage;
+const closeButton = document.getElementById("closeButton");
+const maxButton = document.getElementById("maxButton");
+const minusButton = document.getElementById("minusButton");
+
+minusButton.addEventListener("click", (event: Event) => {
+  remote.BrowserWindow.getFocusedWindow().minimize();
+  minusButton.blur();
+})
+
+maxButton.addEventListener("click", (event: Event) => {
+  const windowMax: boolean = JSON.parse(maxButton.getAttribute("data-maximize")) as boolean;
+  if (windowMax === false) {
+    remote.BrowserWindow.getFocusedWindow().maximize();
+    maxButton.className = "far fa-window-restore";
+    maxButton.setAttribute("data-maximize", "true");
+    closeButton.blur();
+  } else {
+    maxButton.setAttribute("data-maximize", "false");
+    maxButton.className = "far fa-window-maximize";
+    ipcRenderer.send('reset-window-size');
+    closeButton.blur();
+  }
+});
+
+closeButton.addEventListener("click", (event: Event) => {
+  remote.BrowserWindow.getFocusedWindow().close();
+  closeButton.blur();
+});
 
 function generateCharateristics(character: Character) {
 
@@ -111,6 +139,13 @@ document.addEventListener("DOMContentLoaded", () => {
     charAge.textContent = String(character.age);
     charName.textContent = `${Helpers.upcase(name["title"])}. ${Helpers.upcase(name["first"])} ${Helpers.upcase(name["last"])}`
   });
+
+  const isMax = remote.BrowserWindow.getFocusedWindow().isMaximized();
+  if (isMax === true) {
+    maxButton.setAttribute("data-maximize", "true");
+    maxButton.className = "far fa-window-restore";
+    closeButton.blur();
+  }
 });
 
 const rollChar = document.getElementById("rollChar");
@@ -138,6 +173,7 @@ rollChar.addEventListener("click", (event: Event) => {
   });
 });
 
+/*
 const getStorage = document.getElementById("getStorage");
 getStorage.addEventListener("click", () => {
   const storedCharacter = characterStore.getItem("character")
@@ -145,5 +181,9 @@ getStorage.addEventListener("click", () => {
 
   ipcRenderer.on('character-saved', (event, arg) => {
     console.log(arg);
-  })
+  });
+
+
+
 });
+*/

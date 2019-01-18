@@ -1,14 +1,14 @@
-
-
-import { app, BrowserWindow, ipcMain } from 'electron';
+import { app, BrowserWindow, ipcMain, screen} from 'electron';
 import * as request from "request";
 import * as fs from "fs";
 import sql = require("sql.js");
 
 const db = new sql.Database();
 
+process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
 
 //const character = fs.readFileSync("migrations/characters.sql", "utf8");
+/*
 let tables;
 try {
   tables = db.exec("SELECT * FROM hello");
@@ -16,14 +16,30 @@ try {
   tables = "Table does not exist"
 }
 console.log(tables);
+*/
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let win
 
+let win;
 function createWindow () {
-  // Create the browser window.
-  win = new BrowserWindow({ width: 1200, height: 800, frame: false})
 
+  // Create the browser window.
+  const {width, height} = screen.getPrimaryDisplay().workAreaSize;
+
+  let win = new BrowserWindow({ 
+    width: (width / 2), 
+    height: (height / 2 + 100),
+    nodeIntegration: false,
+    frame: false,
+    preload: 'src/app.js'
+  } as any);
+
+
+  ipcMain.on('reset-window-size', (event, arg)=> {
+    win.setSize(width / 2, height / 2 + 100)
+  })
+  
   // and load the index.html of the app.
   win.loadFile('src/index.html')
 
@@ -39,14 +55,14 @@ function createWindow () {
   })
 }
 
+/*
 ipcMain.on('save-character', (event, arg) => {
   const characterStats = JSON.parse(arg as string);
   console.log(characterStats);
   event.sender.send('character-saved', "Character was saved");
-});
+});*/
 
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
+
 // Some APIs can only be used after this event occurs.
 app.on('ready', createWindow)
 
