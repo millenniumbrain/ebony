@@ -1,15 +1,27 @@
 #nav {
-  margin: 50px 0 0;
-  padding: 0 25px 0;
-}
-
-#menuTab {
+  background: #2B283D;
+  position: fixed;
+  width: 20%;
+  height: 100%;
+  margin: 2% 0;
 }
 
 .menu-tab-item {
-  display: inline-block;
+  padding: 0 0 0 0;
   a {
-    color: #F6F4F4;
+    span {
+      padding-right: 10px;
+    }
+    padding: 10px 0 10px 20px;
+    display: block;
     text-decoration: none;
+    color: #F84652;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    &:hover {
+      color: #F6F4F4;
+      background: #F84652;
+    }
   }
 }
+

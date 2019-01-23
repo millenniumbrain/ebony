@@ -28,7 +28,7 @@ function createWindow () {
   const {width, height} = screen.getPrimaryDisplay().workAreaSize;
 
   let win = new BrowserWindow({ 
-    width: (width / 2), 
+    width: (width / 1.28), 
     height: (height / 2 + 100),
     nodeIntegration: false,
     frame: false,

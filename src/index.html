@@ -22,47 +22,58 @@
         </div>
       </div>
     </section>
-    <nav id="nav">
-      <ul id="menuTab">
-        <li class="menu-tab-item">
-          <a href="#">Generator</a>
-        </li>
-        <li class="menu-tab-item">
-          <a href="#">List</a>
-        </li>
-      </ul>
-    </nav>
-    <header id="header">
-        <h1>Character Generator</h1>
-    </header>
-    <div class="button-container">
-      <button id="rollChar" class="pure-button pure-button-primary">Roll Character</button>
-    </div>
-    <section id="characterCard">
-      <div class="pure-g">
-        <div id="charInfo" class="pure-u-1-3">
-            <h2>Character</h2>
-            <div>
-              <span class="desc-title">Species</span>
-              <span id="charSpecies">Human</span>
-            </div>
-            <div>
-              <span class="desc-title">Name</span>
-              <span id="charName"></span>
-            </div>
-            <div >
-              <span class="desc-title">Age</span>
-              <span id="charAge"></span>
-            </div>
-        </div>
-        <div id="charStats" class="pure-u-2-3">
-          <h2>Characteristics</h2>
-        </div>
+    <div id="contentWindow" class="pure-g">
+      <div class="pure-u-1-5">
+        <nav id="nav">
+            <ul id="menuTab">
+              <li class="menu-tab-item">
+                <a href="#"><span class="fas fa-users"></span>Character Generator</a>
+              </li>
+              <li class="menu-tab-item">
+                <a class="menu-tab-highlight" href="#"><span class="far fa-list-alt"></span>Character List</a>
+              </li>
+              <li class="menu-tab-item">
+                <a class="menu-tab-highlight" href="#"><span class="fas fa-history"></span>Battle History</a>
+              </li>
+            </ul>
+          </nav>
       </div>
-    </section>
-    <section style="padding: 5% 0 0;" class="button-container">
-      <button id="getStorage" class="pure-button pure-button-secondary">Save Character</button>
-    </section>
+      <div id="characterContent" class="pure-u-4-5">
+        <header id="header">
+          <h1>Character Generator</h1>
+        </header>
+        <div class="button-container">
+          <button id="rollChar" class="pure-button pure-button-primary">Roll Character</button>
+        </div>
+        <section id="characterCard">
+          <div class="pure-g">
+            <div id="charInfo" class="pure-u-1-3">
+                <h2>Character</h2>
+                <div>
+                  <span class="desc-title">Species</span>
+                  <span id="charSpecies">Human</span>
+                </div>
+                <div>
+                  <span class="desc-title">Name</span>
+                  <span id="charName"></span>
+                </div>
+                <div >
+                  <span class="desc-title">Age</span>
+                  <span id="charAge"></span>
+                </div>
+            </div>
+            <div id="charStats" class="pure-u-2-3">
+              <h2>Characteristics</h2>
+            </div>
+          </div>
+          <section style="padding: 6% 0 0;" class="button-container">
+            <button id="getStorage" class="pure-button pure-button-secondary">Save Character</button>
+          </section>
+        </section>
+      </div>
+    </div>
+
+
     <script src="app.js"></script>
   </body>
 </html>
