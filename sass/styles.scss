@@ -82,6 +82,60 @@
   color: #F6F4F4;
 }
 
+.skills {
+  text-align: center;
+}
+#addSkill {
+  font-size: 0.8em;
+  span {
+    margin-left: 10px;
+  }
+}
+
+.skill {
+
+  text-align: left;
+  font-size: 0.8em;
+  margin: 15px auto;
+  input[type=text] {
+    background: none;
+    border: none;
+    border-bottom: 1px solid #F6F4F4;
+    margin-right: 10px;
+    outline: none;
+    &:active {
+      border-color: #F84652;
+    }
+
+    &:focus {
+      border-color: #F84652;
+    }
+  }
+
+  input[type=text]:first-child {
+    width: 200px;
+  }
+
+  input[type=text]:nth-child(2) {
+    text-align: center;
+    width: 50px;
+  }
+}
+
+.skill-remove {
+  border: none;
+  border-radius: 100px;
+  background: none;
+  &:hover {
+    color: #F84652;
+  }
+}
+
+#statGroup {
+  .pure-u-1-4 {
+    margin: 10px 0;
+  }
+}
 .stat-con {
   text-align: center;
   ul {

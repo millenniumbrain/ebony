@@ -1,7 +1,8 @@
-export class Helpers {
-  constructor() {
+/// <reference path="./stats.ts" />
 
-  }
+import StatAttributes = Stats.StatAttributes;
+
+export class Helpers {
 
   public static getRandomInt(max) : number {
     let num = Math.floor(Math.random() * Math.floor(max));
@@ -21,5 +22,24 @@ export class Helpers {
 
   public static upcase(str) : string {
     return str.charAt(0).toUpperCase() + str.substr(1);
+  }
+
+  public static generateStats(numDice: number) : StatAttributes {
+    const stats: StatAttributes = {
+      base: 0,
+      hard: 0,
+      difficult: 0
+    };
+    if (numDice === 3) {
+      stats.base  = Helpers.rollNumDice(3) * 5;
+      stats.hard = Math.floor(stats.base / 2);
+      stats.difficult = Math.floor(stats.base / 5);
+    } 
+    else {
+      stats.base  = Helpers.rollNumDice(2) * 5;
+      stats.hard = Math.floor(stats.base / 2);
+      stats.difficult = Math.floor(stats.base / 5);
+    }
+    return stats;
   }
 }

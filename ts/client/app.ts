@@ -1,19 +1,25 @@
-import {Character} from "./character";
 import {remote, ipcRenderer} from "electron";
-import {Helpers} from "../helpers";
 import * as request from "request";
+import {Human} from "./human";
+import {Helpers} from "../helpers";
+import {Skill} from "./skill";
 
-const characterStore = window.localStorage;
+function createSkillList() {
+  const skills: Array<Skill> = [
+    new Skill("Accounting", 5)
+  ];
+  const possibleSkills: HTMLDataListElement = document.createElement("datalist");
+  possibleSkills.id = "possibleSkills";
 
+}
+function spawnHuman(human: Human) {
 
-function generateCharateristics(character: Character) {
-
-  const props = Object.getOwnPropertyNames(character);
+  const props = Object.getOwnPropertyNames(human);
 
   let statCollection = [];
 
-  for (let i = 0; i < props.length - 1; i++) {
-    const descript = Object.getOwnPropertyDescriptor(character, props[i]);
+  for (let i = 0; i < props.length - 2; i++) {
+    const descript = Object.getOwnPropertyDescriptor(human, props[i]);
 
     const stat = document.createElement("div");
     const statCon = document.createElement("div");
@@ -26,7 +32,7 @@ function generateCharateristics(character: Character) {
     const diffStatCon = document.createElement("li")
     const diffStat = document.createElement("span");
 
-    stat.className = "pure-u-1-4";
+    stat.className = "pure-u-1-5";
     statCon.className = "stat-con";
     statList.className = "base-stat-list";
 
@@ -91,36 +97,37 @@ function generateCharateristics(character: Character) {
   }
 }
 
+const humanStore = window.localStorage;
+
 document.addEventListener("DOMContentLoaded", () => {
+  const closeButton = document.getElementById("closeButton");
+  const maxButton = document.getElementById("maxButton");
+  const minusButton = document.getElementById("minusButton");
 
-const closeButton = document.getElementById("closeButton");
-const maxButton = document.getElementById("maxButton");
-const minusButton = document.getElementById("minusButton");
+  minusButton.addEventListener("click", () => {
+    remote.BrowserWindow.getFocusedWindow().minimize();
+    minusButton.blur();
+  })
 
-minusButton.addEventListener("click", (event: Event) => {
-  remote.BrowserWindow.getFocusedWindow().minimize();
-  minusButton.blur();
-})
+  maxButton.addEventListener("click", () => {
+    const windowMax: boolean = JSON.parse(maxButton.getAttribute("data-maximize")) as boolean;
+    if (windowMax === false) {
+      remote.BrowserWindow.getFocusedWindow().maximize();
+      maxButton.className = "far fa-window-restore";
+      maxButton.setAttribute("data-maximize", "true");
+      closeButton.blur();
+    } else {
+      maxButton.setAttribute("data-maximize", "false");
+      maxButton.className = "far fa-window-maximize";
+      ipcRenderer.send('reset-window-size');
+      closeButton.blur();
+    }
+  });
 
-maxButton.addEventListener("click", (event: Event) => {
-  const windowMax: boolean = JSON.parse(maxButton.getAttribute("data-maximize")) as boolean;
-  if (windowMax === false) {
-    remote.BrowserWindow.getFocusedWindow().maximize();
-    maxButton.className = "far fa-window-restore";
-    maxButton.setAttribute("data-maximize", "true");
+  closeButton.addEventListener("click", () => {
+    remote.BrowserWindow.getFocusedWindow().close();
     closeButton.blur();
-  } else {
-    maxButton.setAttribute("data-maximize", "false");
-    maxButton.className = "far fa-window-maximize";
-    ipcRenderer.send('reset-window-size');
-    closeButton.blur();
-  }
-});
-
-closeButton.addEventListener("click", (event: Event) => {
-  remote.BrowserWindow.getFocusedWindow().close();
-  closeButton.blur();
-});
+  });
 
   const isMax = remote.BrowserWindow.getFocusedWindow().isMaximized();
   if (isMax === true) {
@@ -134,59 +141,72 @@ closeButton.addEventListener("click", (event: Event) => {
     const gender = person["results"][0]["gender"];
     const name = person["results"][0]["name"];
 
-    const character = new Character(name["title"], 
-      Helpers.upcase(name["first"]),
-      Helpers.upcase(name["last"]),
-      Helpers.upcase(gender));
+    const human = new Human(name["title"], 
+    Helpers.upcase(name["first"]),
+    Helpers.upcase(name["last"]),
+    Helpers.upcase(gender));
 
-    generateCharateristics(character);
-    characterStore.setItem('character', JSON.stringify(character));
+    spawnHuman(human);
+    humanStore.setItem('human', JSON.stringify(human));
     
 
     const charName = document.getElementById("charName");
     const charAge = document.getElementById("charAge");
+    const charHP = document.getElementById("charHP");
 
-    charAge.textContent = String(character.age);
-    charName.textContent = `${Helpers.upcase(name["title"])}. ${Helpers.upcase(name["first"])} ${Helpers.upcase(name["last"])}`
+    charHP.textContent = String(human.hp);
+    charAge.textContent = String(human.age);
+    charName.textContent = `${Helpers.upcase(name["title"])}. ${Helpers.upcase(name["first"])} ${Helpers.upcase(name["last"])}`;
   });
 });
 
 const rollChar = document.getElementById("rollChar");
 const charStats = document.getElementById("charStats");
+
 rollChar.addEventListener("click", (event: Event) => {
   request("https://randomuser.me/api/1.2/?nat=us", (error, response, body) => {
     const person = JSON.parse(body as string);
     const gender = person["results"][0]["gender"];
     const name = person["results"][0]["name"];
 
-    const character = new Character(name["title"], 
+    const human = new Human(name["title"], 
       Helpers.upcase(name["first"]),
       Helpers.upcase(name["last"]),
       Helpers.upcase(gender));
 
-    generateCharateristics(character);
+    spawnHuman(human);
 
-    characterStore.setItem('character', JSON.stringify(character));
+    humanStore.setItem('human', JSON.stringify(human));
 
     const charName = document.getElementById("charName");
     const charAge = document.getElementById("charAge");
+    const charHP = document.getElementById("charHP");
 
-    charAge.textContent = String(character.age);
+    charHP.textContent = String(human.hp);
+    charAge.textContent = String(human.age);
     charName.textContent = `${Helpers.upcase(name["title"])}. ${Helpers.upcase(name["first"])} ${Helpers.upcase(name["last"])}`
   });
 });
 
-/*
-const getStorage = document.getElementById("getStorage");
-getStorage.addEventListener("click", () => {
-  const storedCharacter = characterStore.getItem("character")
-  ipcRenderer.send('save-character', storedCharacter);
+const skillList = document.getElementById("skillList");
+const addSkill = document.getElementById("addSkill");
+addSkill.addEventListener("click", () => {
+  const skill = document.createElement("div");
+  const skillName = document.createElement("input");
+  const skillValue = document.createElement("input");
+  const skillRemove = document.createElement("button");
 
-  ipcRenderer.on('character-saved', (event, arg) => {
-    console.log(arg);
-  });
+  skill.className = "skill";
+  skillName.className = "skill-name";
+  skillValue.className = "skill-value";
+  skillRemove.className = "skill-remove";
 
+  skillName.type = "text";
+  skillValue.type = "text";
+  
+  skill.appendChild(skillName);
+  skill.appendChild(skillValue);
+  skill.appendChild(skillRemove);
 
-
+  skillList.appendChild(skill);
 });
-*/

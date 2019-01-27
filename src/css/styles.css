@@ -1,1 +1,193 @@
-html{height:inherit}body{background:#1E1528;height:inherit;width:100%;font-family:'Inter UI';overflow-y:hidden}.pure-g [class*="pure-u"]{font-family:'Inter UI' !important}ul{margin:0;padding:0}#nav{background:#2B283D;position:fixed;width:20%;height:100%;margin:2% 0}.menu-tab-item{padding:0 0 0 0}.menu-tab-item a{padding:10px 0 10px 20px;display:block;text-decoration:none;color:#F84652;border-top-right-radius:3px;border-bottom-right-radius:3px}.menu-tab-item a span{padding-right:10px}.menu-tab-item a:hover{color:#F6F4F4;background:#F84652}.pure-button-primary{background:#F84652;color:#F6F4F4}.pure-button-primary:hover{background:#ad3745}.pure-button-secondary{background:#2C293E;color:#F84652}.pure-button-secondary:hover{background:#36324d;color:#e7515b}#browserControls{top:0;position:fixed;-webkit-app-region:drag;color:#F6F4F4;width:100%;height:45px;background:#09070E}#browserControls .pure-g{padding:15px 25px 0 15px}#browserControls button{-webkit-app-region:no-drag;display:inline-block;margin:0 4px;padding:0 10px;background:none;border:none}#browserControls button:hover{color:#AA2930}.window-controls{text-align:right}#header{color:#F6F4F4;margin:5% 0 0;text-align:center}.button-container{text-align:center}#contentWindow{margin:20px 0;height:100%}#characterContent{overflow-y:auto;height:100%}#characterCard{width:90%;margin:2% auto}#characterCard h2{font-size:1.05em;text-align:center;margin:initial auto;font-weight:normal}#charInfo{color:#F6F4F4;font-size:1.1em}.desc-title{margin:5px 0;display:inline-block;width:80px}#charStats{color:#F6F4F4}.stat-con{text-align:center}.stat-con ul{list-style:none}.stat-title{width:95px;color:#F84652;font-weight:bold;text-transform:uppercase;margin:0 auto;font-size:0.9em}.base{font-size:1.5em;position:relative;display:block}.base-stat{width:95px;position:relative;top:10%;-webkit-transform:translateY(10%);-ms-transform:translateY(10%);transform:translateY(10%)}.stat-box{background:#2C293E;display:inline-block;padding:8px 0;border-radius:3px;font-size:1.2em}.sub-stat{display:inline-block}.sub-stat .stat-box{margin:10px 2px 20px;padding:8px 0;width:45px}ul{padding:0;margin:0}
+html {
+  height: inherit; }
+
+body {
+  background: #1E1528;
+  height: inherit;
+  width: 100%;
+  font-family: 'Inter UI';
+  overflow-y: hidden; }
+
+.pure-g [class*="pure-u"] {
+  font-family: 'Inter UI' !important; }
+
+ul {
+  margin: 0;
+  padding: 0; }
+
+#nav {
+  background: #2B283D;
+  position: fixed;
+  width: 20%;
+  height: 100%;
+  margin: 2% 0; }
+
+.menu-tab-item {
+  padding: 0 0 0 0; }
+  .menu-tab-item a {
+    padding: 10px 0 10px 20px;
+    display: block;
+    text-decoration: none;
+    color: #F84652;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px; }
+    .menu-tab-item a span {
+      padding-right: 10px; }
+    .menu-tab-item a:hover {
+      color: #F6F4F4;
+      background: #F84652; }
+
+.pure-button-primary {
+  background: #F84652;
+  color: #F6F4F4; }
+  .pure-button-primary:hover {
+    background: #ad3745; }
+
+.pure-button-secondary {
+  background: #2C293E;
+  color: #F84652; }
+  .pure-button-secondary:hover {
+    background: #36324d;
+    color: #e7515b; }
+
+#browserControls {
+  top: 0;
+  position: fixed;
+  -webkit-app-region: drag;
+  color: #F6F4F4;
+  width: 100%;
+  height: 45px;
+  background: #09070E; }
+  #browserControls .pure-g {
+    padding: 15px 25px 0 15px; }
+  #browserControls button {
+    -webkit-app-region: no-drag;
+    display: inline-block;
+    margin: 0 4px;
+    padding: 0 10px;
+    background: none;
+    border: none; }
+    #browserControls button:hover {
+      color: #AA2930; }
+
+.window-controls {
+  text-align: right; }
+
+#header {
+  color: #F6F4F4;
+  margin: 5% 0 0;
+  text-align: center; }
+
+.button-container {
+  text-align: center; }
+
+#contentWindow {
+  margin: 20px 0;
+  height: 100%; }
+
+#characterContent {
+  overflow-y: auto;
+  height: 100%; }
+
+#characterCard {
+  width: 90%;
+  margin: 2% auto; }
+  #characterCard h2 {
+    font-size: 1.05em;
+    text-align: center;
+    margin: initial auto;
+    font-weight: normal; }
+
+#charInfo {
+  color: #F6F4F4;
+  font-size: 1.1em; }
+
+.desc-title {
+  margin: 5px 0;
+  display: inline-block;
+  width: 80px; }
+
+#charStats {
+  color: #F6F4F4; }
+
+.skills {
+  text-align: center; }
+
+#addSkill {
+  font-size: 0.8em; }
+  #addSkill span {
+    margin-left: 10px; }
+
+.skill {
+  text-align: left;
+  font-size: 0.8em;
+  margin: 15px auto; }
+  .skill input[type=text] {
+    background: none;
+    border: none;
+    border-bottom: 1px solid #F6F4F4;
+    margin-right: 10px;
+    outline: none; }
+    .skill input[type=text]:active {
+      border-color: #F84652; }
+    .skill input[type=text]:focus {
+      border-color: #F84652; }
+  .skill input[type=text]:first-child {
+    width: 200px; }
+  .skill input[type=text]:nth-child(2) {
+    text-align: center;
+    width: 50px; }
+
+.skill-remove {
+  border: none;
+  border-radius: 100px;
+  background: none; }
+  .skill-remove:hover {
+    color: #F84652; }
+
+#statGroup .pure-u-1-4 {
+  margin: 10px 0; }
+
+.stat-con {
+  text-align: center; }
+  .stat-con ul {
+    list-style: none; }
+
+.stat-title {
+  width: 95px;
+  color: #F84652;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 0 auto;
+  font-size: 0.9em; }
+
+.base {
+  font-size: 1.5em;
+  position: relative;
+  display: block; }
+
+.base-stat {
+  width: 95px;
+  position: relative;
+  top: 10%;
+  -webkit-transform: translateY(10%);
+  -ms-transform: translateY(10%);
+  transform: translateY(10%); }
+
+.stat-box {
+  background: #2C293E;
+  display: inline-block;
+  padding: 8px 0;
+  border-radius: 3px;
+  font-size: 1.2em; }
+
+.sub-stat {
+  display: inline-block; }
+  .sub-stat .stat-box {
+    margin: 10px 2px 20px;
+    padding: 8px 0;
+    width: 45px; }
+
+ul {
+  padding: 0;
+  margin: 0; }

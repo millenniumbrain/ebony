@@ -21,7 +21,8 @@
     "build:electron": "webpack --config webpack.dev.js",
     "build:client": "webpack --config webpack.client.js",
     "build:render": "webpack --config webpack.render.js",
-    "start:electron": "electron src",
+    "start:electron": "electron .",
+    "build:sass": "node-sass -w sass -o src/css",
     "rebuild": "electron-rebuild -f -w"
   },
   "repository": {
@@ -49,6 +50,7 @@
     "global": "^4.3.2",
     "lodash": "^4.17.11",
     "luxon": "^1.4.4",
+    "node-sass": "^4.11.0",
     "request": "^2.88.0",
     "sql.js": "^0.5.0"
   }

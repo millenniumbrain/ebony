@@ -1,10 +1,10 @@
-import {Helpers} from "../helpers";
+/// <reference path="../stats.ts" />
 
-interface StatAttributes {
-  base: number,
-  hard: number,
-  difficult: number
-}
+import StatAttributes = Stats.StatAttributes;
+
+import {Helpers} from "../helpers";
+import {Skill} from "./skill";
+
 
 export class Character {
   gender: string;
@@ -15,6 +15,7 @@ export class Character {
   age: number;
   build: number;
   dmgBonus: number;
+  hp: number;
   mov: number;
   str: StatAttributes;
   con: StatAttributes;
@@ -24,28 +25,36 @@ export class Character {
   int: StatAttributes;
   pow: StatAttributes;
   edu: StatAttributes;
+  skills: Array<Skill>;
 
   constructor(title: string, firstName: string, lastName: string, gender: string) {
-    this.str = this.generateStats(3);
-    this.con = this.generateStats(3);
-    this.siz = this.generateStats(2);
-    this.dex = this.generateStats(3);
-    this.app = this.generateStats(3);
-    this.int = this.generateStats(2);
-    this.pow = this.generateStats(3);
-    this.edu = this.generateStats(2);
+    this.str = Helpers.generateStats(3);
+    this.con = Helpers.generateStats(3);
+    this.siz = Helpers.generateStats(2);
+    this.dex = Helpers.generateStats(3);
+    this.app = Helpers.generateStats(3);
+    this.int = Helpers.generateStats(2);
+    this.pow = Helpers.generateStats(3);
+    this.edu = Helpers.generateStats(2);
     this.luck = Helpers.rollNumDice(3) * 5;
     this.mov = this.generateMovement();
     this.dmgBonus = this.generateDmgBns();
     this.build = this.generateBuild();
     this.age = this.generateAge();
+    this.hp = this.generateHP();
+  }
+
+  generateHP() : number {
+    const hp: number = this.con.base + this.siz.base;
+    console.log(hp /10);
+    return Math.floor(hp / 10);
   }
 
   // generate a movement number based on a human character's stats
   generateMovement() : number {
-    const movNine: boolean = this.str.base > this.siz.base && this.dex.base > this.siz.base;
-    const movEight: boolean = this.str.base > this.siz.base || this.dex.base > this.siz.base;
-    const movSeven: boolean = this.str.base < this.siz.base || this.dex.base < this.siz.base;
+    const movNine: boolean = this.str.base > this.siz.base && this.dex.base > this.siz.base; // dex and str > siz
+    const movEight: boolean = this.str.base > this.siz.base || this.dex.base > this.siz.base; // dex or str > siz
+    const movSeven: boolean = this.str.base < this.siz.base || this.dex.base < this.siz.base; // dex or str < siz
     if (movSeven) {
       return 7;
     } else if (movEight && !movNine) {
@@ -77,6 +86,7 @@ export class Character {
     } else if (combinedStats >= 445 && combinedStats <= 524) {
       dmgBonus = Helpers.rollNumDice(5, 6);
     } else {
+      // add rolls above 524 cutoff, every 80 points
       const addedRolls = Math.floor((combinedStats - 524) / 80);
       dmgBonus = Helpers.rollNumDice(5 + addedRolls);
     }
@@ -107,6 +117,7 @@ export class Character {
     } else if (combinedStats >= 445 && combinedStats <= 524) {
       build = 6;
     } else {
+      // add rolls above 524 cutoff, every 80 points
       const addedBonus: number = Math.floor((combinedStats - 524) / 80)
       build = 6 + addedBonus;
     }
@@ -123,26 +134,8 @@ export class Character {
     }
   }
 
-  generateStats(numDice: number) : StatAttributes {
-    const stats: StatAttributes = {
-      base: 0,
-      hard: 0,
-      difficult: 0
-    };
-    if (numDice === 3) {
-      stats.base  = Helpers.rollNumDice(3) * 5;
-      stats.hard = Math.floor(stats.base / 2);
-      stats.difficult = Math.floor(stats.base / 5);
-    } else {
-      stats.base  = Helpers.rollNumDice(2) * 5;
-      stats.hard = Math.floor(stats.base / 2);
-      stats.difficult = Math.floor(stats.base / 5);
-    }
-    return stats;
-  }
-
   rollCheck(stat: string, rollType: string) : boolean {
-    const roll = 1 + Helpers.getRandomInt(100);
+    const roll = Helpers.getRandomInt(100);
     switch(rollType) {
       case "base":
         if (roll <= this[stat].base)  {
