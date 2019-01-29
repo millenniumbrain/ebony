@@ -4,14 +4,110 @@ import {Human} from "./human";
 import {Helpers} from "../helpers";
 import {Skill} from "./skill";
 
-function createSkillList() {
-  const skills: Array<Skill> = [
-    new Skill("Accounting", 5)
-  ];
-  const possibleSkills: HTMLDataListElement = document.createElement("datalist");
-  possibleSkills.id = "possibleSkills";
+const firearmSkills: Array<Skill> = [
+  new Skill("Handgun", 20),
+  new Skill("Heavy Weapons", 10),
+  new Skill("Shotgun", 25),
+  new Skill("Submachine Gun", 15),
+  new Skill("Rifle", 25),
+  new Skill("Flamethrower", 10),
+  new Skill("Bow", 15),
+  new Skill("Machine Gun", 10),
+];
 
-}
+const scienceSkills: Array<Skill> = [
+  new Skill("Chemistry", 1),
+  new Skill("Astronomy", 1),
+  new Skill("Biology", 1),
+  new Skill("Botany", 1),
+  new Skill("Cryptography", 1),
+  new Skill("Geology", 1),
+  new Skill("Mathematics", 1),
+  new Skill("Meteorology", 1),
+  new Skill("Pharmacy", 1),
+  new Skill("Zoology", 1),
+  new Skill("Forensics", 1)
+];
+
+const fightingSkills: Array<Skill> = [
+  new Skill("Axe", 15),
+  new Skill("Brawl", 25),
+  new Skill("Chainsaw", 10),
+  new Skill("Fail", 10),
+  new Skill("Garrote", 15),
+  new Skill("Sword", 20),
+  new Skill("Whip", 5),
+];
+
+const artCraftSkills: Array<Skill> = [
+  new Skill("Fine Art", 5),
+  new Skill("Forgery", 5),
+  new Skill("Photography", 5)
+];
+
+const thrownWeaponSkills: Array<Skill> = [
+  new Skill("Spear", 20)
+];
+
+const skills: Array<Skill> = [
+  new Skill("Accounting", 5),
+  new Skill("Acting", 5),
+  new Skill("Animal Handling", 5),
+  new Skill("Anthropology", 1),
+  new Skill("Appraise", 5),
+  new Skill("Archaelogy", 5),
+  new Skill("Art and Craft", 5),
+  new Skill("Artillery", 1),
+  new Skill("Charm", 15),
+  new Skill("Climb", 20),
+  new Skill("Computer Use", 5),
+  new Skill("Credit Rating", 0),
+  new Skill("Cthulhu Mythos", 0),
+  new Skill("Demolitions", 1),
+  new Skill("Disguise", 5),
+  new Skill("Diving", 1),
+  new Skill("Dodge", 0),
+  new Skill("Drive Auto", 20),
+  new Skill("Electrical Repair", 10),
+  new Skill("Electronics", 1),
+  new Skill("Fast Talk", 5),
+  new Skill("First Aid", 30),
+  new Skill("History", 5),
+  new Skill("Hypnosis", 1),
+  new Skill("Intimidate", 15),
+  new Skill("Jump", 20),
+  new Skill("Language (Other)", 1),
+  new Skill("Language (Own)", 0),
+  new Skill("Law", 5),
+  new Skill("Library Use", 20),
+  new Skill("Listen", 20),
+  new Skill("Locksmith", 1),
+  new Skill("Mechanical Repair", 10),
+  new Skill("Medicine", 1),
+  new Skill("Natural World", 10),
+  new Skill("Navigate", 10),
+  new Skill("Occult", 5),
+  new Skill("Operate Heavy Machinery", 1),
+  new Skill("Persuade", 10),
+  new Skill("Physics", 1),
+  new Skill("Pilot", 1),
+  new Skill("Psychoanalysis", 1),
+  new Skill("Psychology", 10),
+  new Skill("Read Lips", 1),
+  new Skill("Ride", 5),
+  new Skill("Science", 1),
+  new Skill("Sleight of Hand", 10),
+  new Skill("Spot Hidden", 25),
+  new Skill("Stealth", 20),
+  new Skill("Survival", 10),
+  new Skill("Swim", 20),
+  new Skill("Throw", 20),
+  new Skill("Track", 10),
+];
+
+  const possibleSkills: HTMLDataListElement = document.createElement("datalist");
+possibleSkills.id = "possibleSkills";
+
 function spawnHuman(human: Human) {
 
   const props = Object.getOwnPropertyNames(human);

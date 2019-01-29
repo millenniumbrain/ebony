@@ -5,19 +5,19 @@ import {Helpers} from "../helpers";
 
 export class Skill {
   name: string;
-  values: StatAttributes;
-  constructor(name: string, values?: StatAttributes | number) {
+  percentage: StatAttributes;
+  constructor(name: string, percentage?: StatAttributes | number) {
     this.name = name;
-    if (typeof(values) === "object") {
-      this.values = values;
+    if (typeof(percentage) === "object") {
+      this.percentage = percentage;
     } else {
-      this.setValue(values);
+      this.setValue(percentage);
     }
   }
 
   public setValue(value: number) : void {
-    this.values.base = value;
-    this.values.difficult = Math.floor(value / 2);
-    this.values.hard = Math.floor(value / 5);
+    this.percentage.base = value;
+    this.percentage.difficult = Math.floor(value / 2);
+    this.percentage.hard = Math.floor(value / 5);
   }
 }
