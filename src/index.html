@@ -9,78 +9,24 @@
     <link rel="stylesheet" href="css/styles.css">
   </head>
   <body>
-    <section id="browserControls">
-      <div class="pure-g">
-        <div class="pure-u-1-5">
-          Keeper Tools
-        </div>
-        <div class="pure-u-3-5"></div>
-        <div class="window-controls pure-u-1-5">
-          <button><span id="minusButton" class="fas fa-minus"></span></button>
-          <button><span id="maxButton" class="far fa-window-maximize" data-maximize="false"></span></button>
-          <button><span id="closeButton" class="fas fa-times"></span></button>
-        </div>
+    <div>
+      <div>
+        <img src="">
       </div>
-    </section>
-    <div id="contentWindow" class="pure-g">
-      <div class="pure-u-1-5">
-        <nav id="nav">
-            <ul id="menuTab">
-              <li class="menu-tab-item">
-                <a href="#"><span class="fas fa-users"></span>Character Generator</a>
-              </li>
-              <li class="menu-tab-item">
-                <a class="menu-tab-highlight" href="#"><span class="far fa-list-alt"></span>Character List</a>
-              </li>
-              <li class="menu-tab-item">
-                <a class="menu-tab-highlight" href="#"><span class="fas fa-history"></span>Battle History</a>
-              </li>
-            </ul>
-          </nav>
+      <div>
+        <button>Open File</button>
+        <button>Generate Palette</button>
       </div>
-      <div id="characterContent" class="pure-u-4-5">
-        <header id="header">
-          <h1>Character Generator</h1>
-        </header>
-        <div class="button-container">
-          <button id="rollChar" class="pure-button pure-button-primary">Roll Character</button>
+      <div>
+        <div class="pure-g">
+          <div class="pure-u-1-5"></div>
+          <div class="pure-u-1-5"></div>
+          <div class="pure-u-1-5"></div>
+          <div class="pure-u-1-5"></div>
+          <div class="pure-u-1-5"></div>
         </div>
-        <section id="characterCard">
-          <div class="pure-g">
-            <div id="charInfo" class="pure-u-1-2">
-                <h2>Character</h2>
-                <div>
-                  <span class="desc-title">Species</span>
-                  <span id="charSpecies">Human</span>
-                </div>
-                <div>
-                  <span class="desc-title">Name</span>
-                  <span id="charName"></span>
-                </div>
-                <div>
-                  <span class="desc-title">HP</span>
-                  <span id="charHP"></span>
-                </div>
-                <div>
-                  <span class="desc-title">Age</span>
-                  <span id="charAge"></span>
-                </div>
-                <div id="skillList" class="skills">
-                  <button id="addSkill" class="pure-button pure-button-secondary">Add Skill<span class="fas fa-plus"></span></button>
-                </div>
-            </div>
-            <div id="charStats" class="pure-u-1-2">
-              <h2>Characteristics</h2>
-            </div>
-          </div>
-          <section style="padding: 6% 0 0;" class="button-container">
-            <button id="getStorage" class="pure-button pure-button-secondary">Save Character</button>
-          </section>
-        </section>
       </div>
     </div>
-
-
     <script src="app.js"></script>
   </body>
 </html>

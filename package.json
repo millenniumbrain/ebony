@@ -4,17 +4,17 @@
   "description": "Boilerplate for ruby roda projects",
   "main": "main.js",
   "devDependencies": {
-    "browserify": "^16.2.2",
+    "browserify": "^16.5.0",
     "clean-webpack-plugin": "^0.1.19",
-    "electron-rebuild": "^1.8.2",
-    "ts-loader": "^5.1.1",
-    "tsify": "^4.0.0",
-    "typescript": "^3.0.3",
-    "uglify-js": "3.3.5",
-    "uglifyjs-webpack-plugin": "^2.0.0",
-    "webpack": "^4.19.0",
-    "webpack-command": "^0.4.1",
-    "webpack-hot-middleware": "^2.24.3",
+    "electron-rebuild": "^1.10.0",
+    "ts-loader": "^5.4.5",
+    "tsify": "^4.0.1",
+    "typescript": "^3.7.5",
+    "uglify-js": "^3.3.5",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^4.41.5",
+    "webpack-command": "^0.4.2",
+    "webpack-hot-middleware": "^2.25.0",
     "webpack-node-externals": "^1.7.2"
   },
   "scripts": {
@@ -51,6 +51,7 @@
     "lodash": "^4.17.11",
     "luxon": "^1.4.4",
     "node-sass": "^4.11.0",
+    "npm-check-updates": "^4.0.1",
     "request": "^2.88.0",
     "sql.js": "^0.5.0"
   }

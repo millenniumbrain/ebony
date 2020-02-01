@@ -28,17 +28,13 @@ function createWindow () {
   const {width, height} = screen.getPrimaryDisplay().workAreaSize;
 
   let win = new BrowserWindow({ 
-    width: (width / 1.28), 
-    height: (height / 2 + 100),
-    nodeIntegration: false,
-    frame: false,
-    preload: 'src/app.js'
+    width: 500, 
+    height: 500,
+    webPreferences: {
+      nodeIntegration: true,
+    },
   } as any);
 
-
-  ipcMain.on('reset-window-size', (event, arg)=> {
-    win.setSize(width / 2, height / 2 + 100)
-  })
   
   // and load the index.html of the app.
   win.loadFile('src/index.html')
