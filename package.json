@@ -46,7 +46,7 @@
     "@types/node": "^10.12.12",
     "@types/request": "^2.48.1",
     "chart.js": "^2.7.3",
-    "electron": "^7.2.4",
+    "electron": "^13.6.6",
     "global": "^4.3.2",
     "lodash": "^4.17.11",
     "luxon": "^1.4.4",
